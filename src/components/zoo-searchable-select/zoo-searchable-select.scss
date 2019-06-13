@@ -1,0 +1,66 @@
+.close {
+	display: inline-block;
+	position: absolute;
+	top: 34%;
+	right: 4%;
+	cursor: pointer;
+}
+
+:host {
+	position: relative;
+}
+
+.box {
+	position: relative;
+
+	&:hover {
+		.selected-options {
+			display: block;
+		}
+	}
+}
+
+.selected-options {
+	display: none;
+
+	&:hover {
+		display: block;
+	}
+}
+
+::slotted(select.searchable-zoo-select) {
+	-webkit-appearance: none;
+	-moz-appearance: none;	
+	text-indent: 1px;
+	text-overflow: '';
+	width: 100%;
+	padding: 13px 15px;
+	border: 2px solid;
+	color: $matterhorn;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+	border-top: none;
+	position: absolute;
+	z-index: 2;
+	top: 60px;
+	font-size: 13px;
+}
+
+::slotted(select.error) {
+	border-color: $error-text-color;
+	transition: border-color 0.3s ease;
+}
+
+::slotted(select.hidden) {
+	display: none;
+}
+
+::slotted(select:disabled) {
+	border-color: #e6e6e6;
+	background-color: #f2f3f4;
+	color: #97999c;
+}
+
+::slotted(select:disabled:hover) {
+	cursor: not-allowed;
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+	<title>Stencil Component Starter</title>
+
+	<script type="module" src="/build/zoo-web-components.esm.js"></script>
+	<script nomodule src="/build/zoo-web-components.js"></script>
+
+	<script>
+		window.addEventListener('load', function() {
+			document.getElementById('zoo-collapsable-list').items = [{header: 'API'},{header: 'Slots'}];
+			document.getElementById('zoo-footer').links = [
+				{
+					href: 'https://github.com/zooplus/zoo-web-components',
+					text: 'Github',
+					type: 'standard'
+				},
+				{
+					href: 'https://www.npmjs.com/package/@zooplus/zoo-web-components',
+					text: 'NPM',
+					type: 'standard'
+				}
+			];
+
+			document.getElementById('modal-button').addEventListener('click', () => {
+				document.getElementById('zoo-modal').openModal();
+			})
+		});
+	</script>
+</head>
+
+<body>
+	<zoo-header headertext="StencilJS"></zoo-header>
+	<div class="feedback-tooltip">
+		<zoo-feedback type="info"
+			text="This is an info message. This element will show tooltip on the right side on hover."></zoo-feedback>
+	</div>
+	<div class="feedback-tooltip">
+		<zoo-feedback type="error"
+			text="This is an error message. This element will show tooltip on the left side on hover."></zoo-feedback>
+	</div>
+	<div class="feedback-tooltip">
+		<zoo-feedback type="success"
+			text="This is a success message. This element will show tooltip on the bottom side on hover.">
+		</zoo-feedback>
+	</div>
+
+	<zoo-button size="small" id="modal-button">
+		<span class="slotted-span">Here we have a very long text indeed!</span>
+	</zoo-button>
+	<zoo-button size="small" disabled="true" class="top-tooltip">
+		<div>Disabled :(</div>
+	</zoo-button>
+	<zoo-button type="hot" size="small">
+		<span class="slotted-span">Show modal</span>
+	</zoo-button>
+	<zoo-checkbox highlighted="true" label="An example checkbox with some additional event handling of clicks inside">
+		<input slot="checkbox" type="checkbox" />
+	</zoo-checkbox>
+
+	<zoo-collapsable-list id="zoo-collapsable-list">
+		<zoo-collapsable-list-item slot="item0">
+			<ul>
+				<li><b>text</b> - text to be presented in the feedback box</li>
+				<li><b>type</b> - type of the feedback.</li>
+			</ul>
+		</zoo-collapsable-list-item>
+		<zoo-collapsable-list-item slot="item1">
+			This component does not accept any slots.
+		</zoo-collapsable-list-item>
+	</zoo-collapsable-list>
+	<zoo-input label="Input type text" linktext="Forgotten your password?" linkhref="https://google.com" linktarget="about:blank" 
+		errormsg="invalid" infotext="Additional helpful information for our users" valid="false">
+		<input slot="input" type="text" placeholder="input" />
+	</zoo-input>
+	<zoo-input label="Input type number" linktext="Forgotten your password?" linkhref="https://google.com" linktarget="about:blank"
+	 infotext="Additional helpful information for our users">
+		<input slot="input" type="number" placeholder="input" />
+	</zoo-input>
+	<zoo-input label="This input has type date" linktext="Native date picker -> click me" linkhref="https://github.com/jcgertig/date-input-polyfill"
+	 linktarget="about:blank" infotext="Click on input to show context menu with date selection">
+		<input slot="input" type="date" placeholder="Enter date" />
+	</zoo-input>
+	<zoo-input label="This input has type time" infotext="Select time">
+		<input slot="input" type="time" placeholder="Enter time" />
+	</zoo-input>
+	<zoo-input label="Textarea example" valid="{inputState}">
+		<textarea slot="input" placeholder="Textarea"></textarea>
+	</zoo-input>
+	<zoo-radio infotext="infotext">
+		<input type="radio" id="contactChoice4" name="contact" value="email">
+		<label for="contactChoice4">Email</label>
+		<input type="radio" id="contactChoice5" name="contact" value="phone">
+		<label for="contactChoice5">Phone</label>
+	</zoo-radio>
+	
+	<zoo-select label="Multiselect" errormsg="Value is required" infotext="Additional helpful information for our users">
+		<select slot="select" multiple>
+			<option class="placeholder" value="" disabled selected>Placeholder</option>
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+		</select>
+	</zoo-select>
+	<zoo-select label="Standard select" errormsg="Value is required" infotext="Additional helpful information for our users">
+		<select slot="select">
+			<option class="placeholder" value="" disabled selected>Placeholder</option>
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>
+		</select>
+	</zoo-select>
+
+	<zoo-searchable-select label="Searchable multiple select" placeholder="Placeholder" >
+		<select multiple slot="select">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		</select>
+	</zoo-searchable-select>
+	<zoo-searchable-select label="Searchable select" placeholder="Placeholder" infotext="Additional helpful information for our users.">
+		<select slot="select">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		</select>
+	</zoo-searchable-select>
+	
+
+	<zoo-footer id="zoo-footer" copyright="© zooplus AG"></zoo-footer> 
+
+	<zoo-modal id="zoo-modal" style="display: none" text="Your basket contains licensed items">
+		<div>
+			<zoo-feedback 
+				type="info" 
+				text="This is an info message. Only one coupon can be accepted with each order. Please choose one coupon that you just entered.">
+			</zoo-feedback>
+			<br>
+			<zoo-checkbox highlighted label="I understand and confirm that ALL of the above statements are true">
+				<input slot="checkbox" type="checkbox"/>
+			</zoo-checkbox>
+			<br>
+			<zoo-button>
+				<button slot="button" class="medium hot" type="button">
+					<span class="slotted-span">Add to cart</span>
+				</button>
+			</zoo-button>
+		</div>
+	</zoo-modal>
+</body>
+
+</html>

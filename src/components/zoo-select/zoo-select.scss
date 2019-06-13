@@ -1,0 +1,80 @@
+.box {
+	box-sizing: border-box;
+	width: 100%;
+	position: relative;
+
+	.close, .arrows {
+		position: absolute;
+		right: 9px;
+		top: 17px;
+	}
+	
+	.close {
+		display: inline-block;
+		cursor: pointer;
+		right: 28px;
+	}
+	
+	.arrows {
+		& > path {
+			fill: $matterhorn;
+		}
+	
+		&.error {
+			& > path {
+				fill: $error-text-color;
+			}
+		}
+	}
+
+	.top-row {
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 3px;
+	}
+	.input-slot {
+		position: relative;
+		padding-bottom: 3px;
+	}
+}
+
+::slotted(select) {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: 100%;
+	background: white;
+	line-height: 20px;
+	padding: 13px 40px 13px 15px;
+	border: 1px solid;
+	border-color: $border-color;
+	border-radius: 3px;
+	color: $matterhorn;
+	outline: none;
+	box-sizing: border-box;
+	font-size: 13px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+::slotted(select:disabled) {
+	border-color: #e6e6e6;
+	background-color: #f2f3f4;
+	color: #97999c;
+}
+
+::slotted(select:disabled:hover) {
+	cursor: not-allowed;
+}
+
+::slotted(select:focus) {
+	border: 2px solid;
+	padding: 12px 40px 12px 14px;
+}
+
+::slotted(select.error) {
+	border: 2px solid;
+	padding: 12px 14px;
+	border-color: $error-text-color;
+	transition: border-color 0.3s ease;
+}
