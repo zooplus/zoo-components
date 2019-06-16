@@ -24,7 +24,7 @@ export class ZooSearchableSelect {
 	searchableInput: HTMLInputElement;
 	isMobile: boolean;
 	tooltipText: string;
-	options: Array<any>;
+	options: HTMLOptionsCollection;
 
 	@Watch('valid')
 	changeInputClass(newValue: boolean, oldValue: boolean) {
@@ -49,37 +49,43 @@ export class ZooSearchableSelect {
 		this.slottedSelect.dispatchEvent(new Event("change"));
 	}
 
-	componentDidLoad() {
+	componentWillLoad() {
 		let slotted = this.host.children;
 		const select = (Array.from(slotted).find(el => el.nodeName === 'SELECT') as any);
 		this.slottedSelect = select;
-		this.options = select.options;
+	}
+
+	componentDidLoad() {
+		this.options = this.slottedSelect.options;
 		if (!this.options || this.options.length < 1) {
 			this.tooltipText = null;
 		}
-		select.addEventListener('blur', () => {
+		this.slottedSelect.addEventListener('blur', () => {
 			this.hideSelectOptions();
 		});
-		if (select.multiple === true) {
+		if (this.slottedSelect.multiple === true) {
 			this.multiple = true;
 		}
-		select.addEventListener('change', () => this.handleOptionChange());
-		select.addEventListener('keydown', e => this.handleOptionKeydown(e));
+		this.slottedSelect.addEventListener('change', () => this.handleOptionChange());
+		this.slottedSelect.addEventListener('keydown', e => this.handleOptionKeydown(e));
 
-		if (select.disabled) {
+		if (this.slottedSelect.disabled) {
 			this.searchableInput.disabled = true;
 		}
 
-		select.classList.add('searchable-zoo-select');
-		select.addEventListener('change', e => this.valueSelected = e.target.value ? true : false);
+		this.slottedSelect.classList.add('searchable-zoo-select');
+		this.slottedSelect.addEventListener('change', e => {
+			const target: any = e.target;
+			this.valueSelected = target.value ? true : false
+		});
 		this.hideSelectOptions();
 
 		this.searchableInput.addEventListener('focus', () => {
-			select.classList.remove('hidden');
+			this.slottedSelect.classList.remove('hidden');
 			this.openSearchableSelect();
 		});
 		this.searchableInput.addEventListener('blur', event => {
-			if (event.relatedTarget !== select) {
+			if (event.relatedTarget !== this.slottedSelect) {
 				this.hideSelectOptions();
 			}
 		});
@@ -93,7 +99,7 @@ export class ZooSearchableSelect {
 		inputValString = inputValString.substr(0, inputValString.length - 3);
 		this.tooltipText = inputValString;
 		this.searchableInput.placeholder = inputValString && inputValString.length > 0 ? inputValString : this.placeholder;
-		for (const option of this.options) {
+		for (const option of Array.from(this.options)) {
 			option.style.display = 'block';
 		}
 		if (!this.multiple) this.hideSelectOptions();
@@ -118,7 +124,7 @@ export class ZooSearchableSelect {
 
 	handleSearchChange() {
 		const inputVal = this.searchableInput.value.toLowerCase();
-		for (const option of this.options) {
+		for (const option of Array.from(this.options)) {
 			if (option.text.toLowerCase().indexOf(inputVal) > -1) option.style.display = 'block';
 			else option.style.display = 'none';
 		}

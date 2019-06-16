@@ -43,10 +43,13 @@ export class ZooInput {
 		return `input-slot ${this.nopadding ? 'no-padding': ''}`;
 	}
 
-	componentDidLoad() {
+	componentWillLoad() {
 		let slotted = this.host.children;
 		const input = (Array.from(slotted).find(el => el.nodeName === 'INPUT') as HTMLElement);
 		this.slottedInput = input;
+	}
+
+	componentDidLoad() {
 		if (!this.valid) {
 			this.slottedInput.classList.add('error');
 		}
