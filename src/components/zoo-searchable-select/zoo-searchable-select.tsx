@@ -5,7 +5,7 @@ import { Component, Prop, h, State, Element, Watch } from '@stencil/core';
 	styleUrl: 'zoo-searchable-select.scss',
 	shadow: true
 })
-export class ZooButton {
+export class ZooSearchableSelect {
 	@Prop({ reflect: true }) labelposition = 'top';
 	@Prop({ reflect: true }) label = '';
 	@Prop({ reflect: true }) linktext = '';

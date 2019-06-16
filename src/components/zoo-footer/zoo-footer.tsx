@@ -6,8 +6,8 @@ import { Component, Prop, h } from '@stencil/core';
 	shadow: true
 })
 export class ZooFooter {
-	@Prop() links = [];
-	@Prop() copyright = '';
+	@Prop({ reflect: true }) links = [];
+	@Prop({ reflect: true }) copyright = '';
 
 	render() {
 		return ([

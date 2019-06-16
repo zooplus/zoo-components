@@ -25,9 +25,9 @@
 
 ### Depends on
 
-- [zoo-select](../zoo-select)
-- [zoo-preloader](../zoo-preloader)
-- [zoo-input](../zoo-input)
+- [zoo-select](..\zoo-select)
+- [zoo-preloader](..\zoo-preloader)
+- [zoo-input](..\zoo-input)
 
 ### Graph
 ```mermaid

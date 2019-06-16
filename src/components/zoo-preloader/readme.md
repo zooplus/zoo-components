@@ -9,8 +9,8 @@
 
 ### Used by
 
- - [zoo-searchable-select](../zoo-searchable-select)
- - [zoo-select](../zoo-select)
+ - [zoo-searchable-select](..\zoo-searchable-select)
+ - [zoo-select](..\zoo-select)
 
 ### Graph
 ```mermaid

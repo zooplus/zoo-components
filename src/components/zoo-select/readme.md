@@ -25,14 +25,14 @@
 
 ### Used by
 
- - [zoo-searchable-select](../zoo-searchable-select)
+ - [zoo-searchable-select](..\zoo-searchable-select)
 
 ### Depends on
 
-- [zoo-link](../zoo-link)
-- [zoo-input-label](../shared/zoo-input-label)
-- [zoo-preloader](../zoo-preloader)
-- [zoo-input-info](../shared/zoo-input-info)
+- [zoo-link](..\zoo-link)
+- [zoo-input-label](..\shared\zoo-input-label)
+- [zoo-preloader](..\zoo-preloader)
+- [zoo-input-info](..\shared\zoo-input-info)
 
 ### Graph
 ```mermaid

@@ -17,8 +17,8 @@
 
 ### Used by
 
- - [zoo-input](../../zoo-input)
- - [zoo-select](../../zoo-select)
+ - [zoo-input](..\..\zoo-input)
+ - [zoo-select](..\..\zoo-select)
 
 ### Graph
 ```mermaid
