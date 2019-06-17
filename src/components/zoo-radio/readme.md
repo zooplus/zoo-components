@@ -18,7 +18,7 @@
 
 ### Depends on
 
-- [zoo-input-info](..\shared\zoo-input-info)
+- [zoo-input-info](../shared/zoo-input-info)
 
 ### Graph
 ```mermaid

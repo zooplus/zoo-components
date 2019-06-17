@@ -35,17 +35,13 @@
 <body>
 	<zoo-header headertext="StencilJS"></zoo-header>
 	<div class="feedback-tooltip">
-		<zoo-feedback type="info"
-			text="This is an info message. This element will show tooltip on the right side on hover."></zoo-feedback>
+		<zoo-feedback type="info" text="This is an info message. This element will show tooltip on the right side on hover."></zoo-feedback>
 	</div>
 	<div class="feedback-tooltip">
-		<zoo-feedback type="error"
-			text="This is an error message. This element will show tooltip on the left side on hover."></zoo-feedback>
+		<zoo-feedback type="error" text="This is an error message. This element will show tooltip on the left side on hover."></zoo-feedback>
 	</div>
 	<div class="feedback-tooltip">
-		<zoo-feedback type="success"
-			text="This is a success message. This element will show tooltip on the bottom side on hover.">
-		</zoo-feedback>
+		<zoo-feedback type="success" text="This is a success message. This element will show tooltip on the bottom side on hover."></zoo-feedback>
 	</div>
 
 	<zoo-button size="small" id="modal-button">
@@ -58,7 +54,7 @@
 		<span class="slotted-span">Show modal</span>
 	</zoo-button>
 	<zoo-checkbox highlighted="true" label="An example checkbox with some additional event handling of clicks inside">
-		<input slot="checkbox" type="checkbox" />
+		<input slot="checkbox" type="checkbox"/>
 	</zoo-checkbox>
 
 	<zoo-collapsable-list id="zoo-collapsable-list">
@@ -138,19 +134,14 @@
 
 	<zoo-modal id="zoo-modal" style="display: none" text="Your basket contains licensed items">
 		<div>
-			<zoo-feedback 
-				type="info" 
-				text="This is an info message. Only one coupon can be accepted with each order. Please choose one coupon that you just entered.">
-			</zoo-feedback>
+			<zoo-feedback type="info" text="This is an info message. Only one coupon can be accepted with each order"></zoo-feedback>
 			<br>
 			<zoo-checkbox highlighted label="I understand and confirm that ALL of the above statements are true">
 				<input slot="checkbox" type="checkbox"/>
 			</zoo-checkbox>
 			<br>
-			<zoo-button>
-				<button slot="button" class="medium hot" type="button">
-					<span class="slotted-span">Add to cart</span>
-				</button>
+			<zoo-button type="hot" size="medium">
+				<span>Add to cart</span>
 			</zoo-button>
 		</div>
 	</zoo-modal>

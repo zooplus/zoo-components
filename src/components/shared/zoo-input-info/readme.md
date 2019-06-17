@@ -18,9 +18,9 @@
 
 ### Used by
 
- - [zoo-input](..\..\zoo-input)
- - [zoo-radio](..\..\zoo-radio)
- - [zoo-select](..\..\zoo-select)
+ - [zoo-input](../../zoo-input)
+ - [zoo-radio](../../zoo-radio)
+ - [zoo-select](../../zoo-select)
 
 ### Graph
 ```mermaid

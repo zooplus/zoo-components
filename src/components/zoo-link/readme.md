@@ -21,9 +21,9 @@
 
 ### Used by
 
- - [zoo-footer](..\zoo-footer)
- - [zoo-input](..\zoo-input)
- - [zoo-select](..\zoo-select)
+ - [zoo-footer](../zoo-footer)
+ - [zoo-input](../zoo-input)
+ - [zoo-select](../zoo-select)
 
 ### Graph
 ```mermaid

@@ -14,7 +14,6 @@
 		align-items: center;
 		justify-content: center;
 		background-image: linear-gradient(to right, var(--main-color, #{$main-color}), var(--main-color-light, #{$main-color-light}));
-		background-image: -webkit-linear-gradient(to right, var(--main-color, #{$main-color}), var(--main-color-light, #{$main-color-light}));
 		color: $white;
 		border: 0;
 		border-radius: 3px;
@@ -36,7 +35,6 @@
 
 		&.hot {
 			background-image: linear-gradient(to right, var(--secondary-color, #{$secondary-color}), var(--secondary-color-light, #{$secondary-color-light}));
-			background-image: -webkit-linear-gradient(to right, var(--secondary-color, #{$secondary-color}), var(--secondary-color-light, #{$secondary-color-light}));
 
 			&:hover, &:focus {
 				background: var(--secondary-color, #{$secondary-color});
@@ -49,7 +47,6 @@
 
 		&:disabled {
 			background-image: linear-gradient(to right, $whisper, $anti-flash-white);
-			background-image: -webkit-linear-gradient(to right, $whisper, $anti-flash-white);
 			color: #7a7a7a;
 
 			&:hover {

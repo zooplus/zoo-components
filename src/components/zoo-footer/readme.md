@@ -17,7 +17,7 @@
 
 ### Depends on
 
-- [zoo-link](..\zoo-link)
+- [zoo-link](../zoo-link)
 
 ### Graph
 ```mermaid
