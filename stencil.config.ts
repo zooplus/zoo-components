@@ -22,5 +22,9 @@ export const config: Config = {
 		{
 			type: 'www'
 		}
-	]
+	],
+	// testing: {
+	// 	browserHeadless: false,
+	// 	browserDevtools: true
+	// }
 };
