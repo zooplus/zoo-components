@@ -45,4 +45,27 @@ describe('zoo-button', () => {
 		expect(button).toHaveClasses(['medium', 'hot', 'zoo-btn']);
 		expect(button).toHaveAttribute('disabled');
 	});
+
+	it('renders unnamed slot', async () => {
+		const page = await newE2EPage();
+		const spanText = 'Test';
+		await page.setContent(`<zoo-button><span>${spanText}</span></zoo-button>`);
+		await page.waitForChanges();
+
+		const span = await page.find('span');
+		expect(span.innerHTML).toEqual(spanText);
+	});
+
+	it('renders multiple unnamed slots', async () => {
+		const page = await newE2EPage();
+		const spanText = 'Test';
+		const spanText2 = 'Test2';
+		await page.setContent(`<zoo-button><span class="span1">${spanText}</span><span class="span2">${spanText2}</span></zoo-button>`);
+		await page.waitForChanges();
+
+		const span1 = await page.find('.span1');
+		expect(span1.innerHTML).toEqual(spanText);
+		const span2 = await page.find('.span2');
+		expect(span2.innerHTML).toEqual(spanText2);
+	});
 });
