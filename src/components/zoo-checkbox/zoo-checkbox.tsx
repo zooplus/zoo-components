@@ -28,19 +28,22 @@ export class ZooCheckbox {
 		}
 	}
 
-	componentDidLoad() {
+	componentWillLoad() {
 		let slotted = this.host.children;
 		const input = (Array.from(slotted).find(el => el.nodeName === 'INPUT') as HTMLElement);
 		this.slottedInput = input;
-		input.addEventListener('focus', () => {
+	}
+
+	componentDidLoad() {
+		this.slottedInput.addEventListener('focus', () => {
 			this.focused = true;
 		});
-		input.addEventListener('blur', () => {
+		this.slottedInput.addEventListener('blur', () => {
 			this.focused = false;
 		});
-		input.addEventListener('keypress', e => {
+		this.slottedInput.addEventListener('keypress', e => {
 			if (e.keyCode === 13) {
-				input.click();
+				this.slottedInput.click();
 			}
 		});
 	};
