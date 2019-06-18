@@ -13,16 +13,23 @@ export class ZooRadio {
 	@Element() host: HTMLElement;
 	slottedInput: HTMLElement;
 
-	componentDidLoad() {
+	componentWillLoad() {
 		let slotted = this.host.children;
 		const input = (Array.from(slotted).find(el => el.nodeName === 'INPUT') as HTMLElement);
 		this.slottedInput = input;
-		input.addEventListener('focus', () => {
-			input.classList.add('focused');
-		});
-		input.addEventListener('blur', () => {
-			input.classList.remove('focused');
-		});
+	}
+
+	componentDidLoad() {
+		if (!this.slottedInput) {
+			throw new Error('No slotted input provided for zoo-radio');
+		} else {
+			this.slottedInput.addEventListener('focus', () => {
+				this.slottedInput.classList.add('focused');
+			});
+			this.slottedInput.addEventListener('blur', () => {
+				this.slottedInput.classList.remove('focused');
+			});
+		}
 	}
 
 	getInfoSection() {

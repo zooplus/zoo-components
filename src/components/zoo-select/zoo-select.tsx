@@ -42,16 +42,26 @@ export class ZooSelect {
 		}
 	}
 
-	componentDidLoad() {
+	componentWillLoad() {
 		let slotted = this.host.children;
 		const select = (Array.from(slotted).find(el => el.nodeName === 'SELECT') as any);
 		this.slottedSelect = select;
-		if (select.multiple) {
-			this.multiple = true;
-		}
-		select.addEventListener('change', e => this.valueSelected = e.target.value ? true : false);
-		if (!this.valid) {
-			this.slottedSelect.classList.add('error');
+	}
+
+	componentDidLoad() {
+		if (!this.slottedSelect) {
+			throw new Error('No slotted select provided for zoo-select');
+		} else {
+			if (this.slottedSelect.multiple) {
+				this.multiple = true;
+			}
+			this.slottedSelect.addEventListener('change', e => {
+				const target: any = e.target;
+				this.valueSelected = target.value ? true : false;
+			});
+			if (!this.valid) {
+				this.slottedSelect.classList.add('error');
+			}
 		}
 	}
 

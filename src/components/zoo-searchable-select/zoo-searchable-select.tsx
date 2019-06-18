@@ -56,39 +56,43 @@ export class ZooSearchableSelect {
 	}
 
 	componentDidLoad() {
-		this.options = this.slottedSelect.options;
-		if (!this.options || this.options.length < 1) {
-			this.tooltipText = null;
-		}
-		this.slottedSelect.addEventListener('blur', () => {
-			this.hideSelectOptions();
-		});
-		if (this.slottedSelect.multiple === true) {
-			this.multiple = true;
-		}
-		this.slottedSelect.addEventListener('change', () => this.handleOptionChange());
-		this.slottedSelect.addEventListener('keydown', e => this.handleOptionKeydown(e));
-
-		if (this.slottedSelect.disabled) {
-			this.searchableInput.disabled = true;
-		}
-
-		this.slottedSelect.classList.add('searchable-zoo-select');
-		this.slottedSelect.addEventListener('change', e => {
-			const target: any = e.target;
-			this.valueSelected = target.value ? true : false
-		});
-		this.hideSelectOptions();
-
-		this.searchableInput.addEventListener('focus', () => {
-			this.slottedSelect.classList.remove('hidden');
-			this.openSearchableSelect();
-		});
-		this.searchableInput.addEventListener('blur', event => {
-			if (event.relatedTarget !== this.slottedSelect) {
-				this.hideSelectOptions();
+		if (!this.slottedSelect) {
+			throw new Error('No slotted select provided for zoo-searchable-select');
+		} else {
+			this.options = this.slottedSelect.options;
+			if (!this.options || this.options.length < 1) {
+				this.tooltipText = null;
 			}
-		});
+			this.slottedSelect.addEventListener('blur', () => {
+				this.hideSelectOptions();
+			});
+			if (this.slottedSelect.multiple === true) {
+				this.multiple = true;
+			}
+			this.slottedSelect.addEventListener('change', () => this.handleOptionChange());
+			this.slottedSelect.addEventListener('keydown', e => this.handleOptionKeydown(e));
+
+			if (this.slottedSelect.disabled) {
+				this.searchableInput.disabled = true;
+			}
+
+			this.slottedSelect.classList.add('searchable-zoo-select');
+			this.slottedSelect.addEventListener('change', e => {
+				const target: any = e.target;
+				this.valueSelected = target.value ? true : false;
+			});
+			this.hideSelectOptions();
+
+			this.searchableInput.addEventListener('focus', () => {
+				this.slottedSelect.classList.remove('hidden');
+				this.openSearchableSelect();
+			});
+			this.searchableInput.addEventListener('blur', event => {
+				if (event.relatedTarget !== this.slottedSelect) {
+					this.hideSelectOptions();
+				}
+			});
+		}
 	}
 
 	handleOptionChange() {
