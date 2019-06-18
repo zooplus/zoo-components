@@ -6,9 +6,9 @@ import { Component, Prop, h } from '@stencil/core';
 	shadow: true
 })
 export class ZooButton {
-	@Prop() type = "cold"; //'hot'
-	@Prop() size = "small"; //'medium', 'big',
-	@Prop() disabled = false;
+	@Prop({ reflect: true }) type = "cold"; //'hot'
+	@Prop({ reflect: true }) size = "small"; //'medium', 'big',
+	@Prop({ reflect: true }) disabled = false;
 
 	getClasses() {
 		return `${this.type} ${this.size} zoo-btn`;
